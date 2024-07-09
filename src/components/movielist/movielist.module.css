@@ -1,0 +1,19 @@
+.movieList {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0px 0px 30px;
+  align-self: flex-start;
+}
+
+.movieItem {
+  color: black;
+}
+
+.movieItem:hover {
+  background-color: #bbe9ff;
+  color: #b1afff;
+}
+
+.movieLink {
+    color: inherit;
+}

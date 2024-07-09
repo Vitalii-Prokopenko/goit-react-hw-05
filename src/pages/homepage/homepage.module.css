@@ -1,0 +1,14 @@
+.homePageSection {
+    padding-top: 50px;    
+    width: 100%;
+    background-color: #FFFED3;
+}
+
+.homePageTitle {
+    padding: 0;
+    margin: 0;
+    padding-left: 50px;
+    padding-top: 20px;
+    font-weight: 800;
+    font-size: 30px;
+}
