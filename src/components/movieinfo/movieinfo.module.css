@@ -1,0 +1,54 @@
+.movieInfo {
+  padding-top: 50px;
+}
+
+.posterInfoWrap,
+.addInfoWrap {
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-bottom: 1px solid black;
+}
+
+.goBackBtn {
+  margin: 0;
+  padding: 5px;
+  border: none;
+  background-color: transparent;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.goBackBtn:hover {
+  color: orangered;
+}
+
+.moviePoster {
+  margin-right: 20px;
+}
+
+.movieTitle,
+.movieUserScore,
+.infoTitle,
+.movieOverview,
+.infoTitle {
+  margin-bottom: 20px;
+}
+
+.movieGenresList {
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.movieGenresItem:not(:last-child) {
+  margin-right: 20px;
+}
+
+.addInfoWrap {
+  display: flex;
+  flex-direction: column;
+}

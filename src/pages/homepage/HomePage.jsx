@@ -1,12 +1,31 @@
+import { useState, useEffect } from "react";
 import MovieList from "../../components/movielist/MovieList";
-import css from './homepage.module.css';
+import { fetchTrendingMovies } from "../../api/movies-api";
+import css from "./homepage.module.css";
 
-const HomePage = ({ moviesToShow }) => {
-    console.log(moviesToShow)
+const HomePage = () => {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    async function getTrendingMovies() {
+      try {
+        const data = await fetchTrendingMovies();
+        // console.log(data);
+        setMovies(data);
+      } catch (error) {
+        // console.error(error);
+      } finally {
+        // console.log("fetch is done");
+      }
+    }
+    getTrendingMovies();
+  }, []);
+
   return (
     <section className={css.homePageSection}>
-    <h1 className={css.homePageTitle}>Trending today</h1>
-    {moviesToShow.length > 0 && <MovieList moviesToShow={moviesToShow} />}</section>
+      <h1 className={css.homePageTitle}>Trending today</h1>
+      {movies.length > 0 && <MovieList moviesToList={movies} />}
+    </section>
   );
 };
 

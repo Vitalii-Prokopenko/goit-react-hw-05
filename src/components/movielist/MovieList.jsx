@@ -1,16 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import css from "./movielist.module.css";
 
-const MovieList = ({ moviesToShow }) => {
-  console.log(moviesToShow);
+const MovieList = ({ moviesToList }) => {  
+  
   return (
     <ul className={css.movieList}>
-      {moviesToShow.map((movie) => {
+      {moviesToList.map((movie) => {
         return (
           <li key={movie.id} className={css.movieItem}>
-            <NavLink to="/movies/:movieId" className={css.movieLink}>
+            <Link to={`/movies/${movie.id}`} className={css.movieLink} >
               {movie.title}
-            </NavLink>
+            </Link>
           </li>
         );
       })}

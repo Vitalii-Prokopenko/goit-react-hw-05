@@ -11,7 +11,8 @@
 
 .movieItem:hover {
   background-color: #bbe9ff;
-  color: #b1afff;
+  color: orangered;
+  text-decoration: underline;
 }
 
 .movieLink {

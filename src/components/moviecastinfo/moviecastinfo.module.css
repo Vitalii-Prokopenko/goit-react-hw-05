@@ -1,0 +1,28 @@
+.castList {
+  list-style: none;
+  padding: 0;
+}
+
+.castItem {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.castItem:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.castImg {
+  margin-right: 30px;
+}
+
+.castName {
+  font-weight: 700;
+  font-size: 26px;
+}
+
+.castCharacter {
+  font-weight: 500;
+  font-size: 20px;
+}
