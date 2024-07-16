@@ -9,13 +9,12 @@ const HomePage = () => {
   useEffect(() => {
     async function getTrendingMovies() {
       try {
-        const data = await fetchTrendingMovies();
-        // console.log(data);
+        const data = await fetchTrendingMovies();       
         setMovies(data);
       } catch (error) {
-        // console.error(error);
+        console.error(error);
       } finally {
-        // console.log("fetch is done");
+        console.log("trending movies fetch is done");
       }
     }
     getTrendingMovies();
@@ -24,7 +23,7 @@ const HomePage = () => {
   return (
     <section className={css.homePageSection}>
       <h1 className={css.homePageTitle}>Trending today</h1>
-      {movies.length > 0 && <MovieList moviesToList={movies} />}
+      {movies.length > 0 && <MovieList moviesToList={movies} location={"/"}/>}
     </section>
   );
 };

@@ -1,26 +1,22 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { TbArrowLeft } from "react-icons/tb";
 import css from "./movieinfo.module.css";
 
 const MovieInfo = ({ movieDetails }) => {
-  const {
-    title,
-    release_date,
-    vote_average,
-    overview,
-    genres,
-    poster_path,
-    id,
-  } = movieDetails;
+  const location = useLocation();
+
+  const { title, release_date, vote_average, overview, genres, poster_path } =
+    movieDetails;
   const releaseYear = release_date.slice(0, 4);
   const userScore = Math.round(vote_average * 10);
   const imgPath = "https://image.tmdb.org/t/p/w300/" + poster_path;
+  const hrefBack = location.state ?? "/movies";
 
   return (
     <section className={css.movieInfo}>
-      <button type="button" className={css.goBackBtn}>
+      <Link to={hrefBack} className={css.goBackBtn}>
         <TbArrowLeft style={{ marginRight: "10px" }} /> Go back
-      </button>
+      </Link>
       <div className={css.movieWrap}>
         <div className={css.posterInfoWrap}>
           <img src={imgPath} className={css.moviePoster} />

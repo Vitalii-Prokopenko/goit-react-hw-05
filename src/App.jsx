@@ -1,30 +1,39 @@
+import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 
+// Styles
 import "./App.css";
 
 // Pages
-import HomePage from "./pages/homepage/HomePage";
-import MoviesPage from "./pages/moviespage/MoviesPage";
-import MovieDetailsPage from "./pages/moviedetailspage/MovieDetailsPage";
-import NotFoundPage from "./pages/notfoundpage/NotFoundPage";
+const HomePage = lazy(() => import("./pages/homepage/HomePage"));
+const MoviesPage = lazy(() => import("./pages/moviespage/MoviesPage"));
+const MovieDetailsPage = lazy(() =>
+  import("./pages/moviedetailspage/MovieDetailsPage")
+);
+const NotFoundPage = lazy(() => import("./pages/notfoundpage/NotFoundPage"));
+
 // Components
+const MovieCast = lazy(() => import("./components/moviecast/MovieCast"));
+const MovieReviews = lazy(() =>
+  import("./components/moviereviews/MovieReviews")
+);
 import Navigation from "./components/navigation/Navigation";
-import MovieCast from "./components/moviecast/MovieCast";
-import MovieReviews from "./components/moviereviews/MovieReviews";
 
 function App() {
   return (
     <>
       <Navigation />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/movies" element={<MoviesPage />} />
-        <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
-          <Route path="credits" element={<MovieCast />} />
-          <Route path="reviews" element={<MovieReviews />} />
-        </Route>
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+            <Route path="credits" element={<MovieCast />} />
+            <Route path="reviews" element={<MovieReviews />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
     </>
   );
 }

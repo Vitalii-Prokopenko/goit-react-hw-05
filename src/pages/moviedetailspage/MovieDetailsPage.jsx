@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { fetchMovieDetails } from "../../api/moviedetails-api";
 import MovieInfo from "../../components/movieinfo/MovieInfo";
 
@@ -11,13 +11,12 @@ const MovieDetailsPage = () => {
   useEffect(() => {
     async function getMovieDetails() {
       try {
-        const data = await fetchMovieDetails(movieId);
-        console.log(data);
+        const data = await fetchMovieDetails(movieId);       
         setMovieDetails(data);
       } catch (error) {
         console.error(error);
       } finally {
-        console.log("fetch is done details");
+        console.log("movie details fetch is done");
       }
     }
     getMovieDetails();

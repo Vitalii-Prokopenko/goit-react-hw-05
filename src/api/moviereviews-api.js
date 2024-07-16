@@ -13,6 +13,5 @@ export const fetchMovieReviews = async (id) => {
   const url = `https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US&page=1`;
 
   const response = await axios.get(url, options);
-  console.log(response);
   return response.data.results;
 };

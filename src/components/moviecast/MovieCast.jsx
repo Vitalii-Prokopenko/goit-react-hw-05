@@ -12,12 +12,11 @@ const MovieCast = () => {
     async function getMovieCast() {
       try {
         const data = await fetchMovieCast(movieId);
-        console.log(data);
         setMovieCast(data);
       } catch (error) {
         console.error(error);
       } finally {
-        console.log("fetch is done cast");
+        console.log("cast fetch is done");
       }
     }
     getMovieCast();
