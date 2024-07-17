@@ -25,7 +25,7 @@ const SearchBar = ({ onSearch }) => {
             type="text"
             autoComplete="off"
             autoFocus
-            name="tag"
+            name="tag"            
           />
           <button type="submit" className={css.searchBtn}>
             Search

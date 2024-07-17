@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
+import { useLocation, useSearchParams } from "react-router-dom";
 import SearchBar from "../../components/searchbar/SearchBar";
 import MovieList from "../../components/movielist/MovieList";
 import { fetchMoviesByTag } from "../../api/moviesbytag-api";
 
 const MoviesPage = () => {
-  const [movies, setMovies] = useState([]);
-  const [tag, setTag] = useState("");
+  const [movies, setMovies] = useState([]); 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const tag = searchParams.get("tag") ?? "";  
 
-  const handleSearch = async (newTag) => {
-    setTag(newTag);
+  const changeTag = (newTag) => {
+    searchParams.set("tag", newTag);
+    setSearchParams(searchParams);
   };
 
   useEffect(() => {
@@ -31,10 +34,8 @@ const MoviesPage = () => {
 
   return (
     <>
-      <SearchBar onSearch={handleSearch} />
-      {movies.length > 0 && (
-        <MovieList moviesToList={movies} location={"/movies"} />
-      )}
+      <SearchBar onSearch={changeTag} />
+      {movies.length > 0 && <MovieList moviesToList={movies} />}
     </>
   );
 };

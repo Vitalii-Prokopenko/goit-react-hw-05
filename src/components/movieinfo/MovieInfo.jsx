@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { TbArrowLeft } from "react-icons/tb";
 import css from "./movieinfo.module.css";
@@ -10,11 +11,11 @@ const MovieInfo = ({ movieDetails }) => {
   const releaseYear = release_date.slice(0, 4);
   const userScore = Math.round(vote_average * 10);
   const imgPath = "https://image.tmdb.org/t/p/w300/" + poster_path;
-  const hrefBack = location.state ?? "/movies";
+  const hrefBack = useRef(location.state ?? "/movies");
 
   return (
     <section className={css.movieInfo}>
-      <Link to={hrefBack} className={css.goBackBtn}>
+      <Link to={hrefBack.current} className={css.goBackBtn}>
         <TbArrowLeft style={{ marginRight: "10px" }} /> Go back
       </Link>
       <div className={css.movieWrap}>
